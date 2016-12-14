@@ -1,0 +1,3 @@
+<%@product.each do |c|%>
+    <%=link_to c.name_product , c%> -- <%=link_to "publicar","/products/#{c.id}/publish", method: :put%> -- <%= link_to "Destruir", c ,method: :delete%>
+<%end%>

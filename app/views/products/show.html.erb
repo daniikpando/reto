@@ -1,0 +1,50 @@
+<p>
+  <strong>Nombre del reto:<strong>
+  <%= @product.name_product %>
+</p>
+
+<p>
+  <strong>Descripcion del reto:</strong>
+  <%= @product.description_product %>
+</p>
+
+<%if @product.video_file_name != nil%>
+    <p>
+      <strong>Video de ayuda para el reto:</strong>
+      <div class="field">
+          <%=  video_tag @product.video.url,size: "800x600", controls:true, autobuffer: true %>
+      </div>
+    </p>
+<%end%>
+<%if @product.image_file_name != nil%>
+    <p>
+      <strong>Imagen del reto</strong>
+        <%=  image_tag @product.image.url(:thumb)%>
+    </p>
+<%end%>
+<p>
+  <strong>La persona retadora es: </strong>
+  <%= @product.user.name %>
+</p>
+<p>
+    likes: <%= @product.like_product%>
+</p>
+<p>
+    dislikes: <%=  @product.dislike_product%>
+</p>
+
+<%= link_to "like", "/products/#{@product.id}/like", method: :put %>
+<%= link_to "dislike", "/products/#{@product.id}/dislike", method: :put %>
+
+<div class="field">
+    <p><%= link_to "DESEAS COMPRARLO", "/products/#{@product.id}/comprar" if user_signed_in? && current_user.name != @product.user.name%></p>
+</div>
+<h2>Comentarios </h2>
+<%@product.comments.each do |c|%>
+    <p><%= c.comment_user%> by --> <%= c.user.name%> ---><%= link_to "Destruir" , "#{@product.id}/comments/#{c.id}" , method: :delete if current_user.is_user_admin?%>
+    </p>
+<%end%>
+<p>
+    <%= "for comment you must be registered !! :)" if !user_signed_in?%>
+</p>
+<%= render "comments/form"%>

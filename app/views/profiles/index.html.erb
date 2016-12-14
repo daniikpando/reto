@@ -1,0 +1,5 @@
+<h1> <%=@user.name%> </h1>
+<p> your account_of_saving: $<%= @user.account_of_saving%></p>
+<p>
+    <%=link_to "deseas mejorar a para poder vender", "/profiles/improve/#{current_user.id}" if @user.permittion_level == 0%>
+</p>

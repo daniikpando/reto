@@ -1,0 +1,8 @@
+<h1>ARE YOU SURE?</h1>
+<p> El precio de el producto es de: $<%= @product.price_product%></p>
+<p> Tu saldo es de: $<%= @user.account_of_saving%></p>
+<%if @user.account_of_saving > @product.price_product %>
+    <%= link_to "Comprar aqui", "/products/#{@product.id}/comprado", method: :put%>
+<%else%>
+    <p>No tienes saldo suficiente <%=link_to "volver a los productos", products_url%> </p>
+<%end%>

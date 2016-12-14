@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name_product: MyString
+  description_product: MyText
+  like_product: 1
+  dislike_product: 1
+  price_product: 1
+
+two:
+  name_product: MyString
+  description_product: MyText
+  like_product: 1
+  dislike_product: 1
+  price_product: 1

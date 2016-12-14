@@ -1,0 +1,4 @@
+<h1>Productos comprados</h1>
+<%@product.each do |product|%>
+    <p>-- <%= product.name_product%> -- from <%= product.user.name%> </p>
+<%end%>

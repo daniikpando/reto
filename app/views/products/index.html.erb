@@ -1,0 +1,27 @@
+<h1>Lista de retos</h1>
+
+<table border="1px">
+  <thead>
+    <tr>
+      <th>Nombre del reto</th>
+      <th>Descripcion del reto</th>
+      <th>Likes</th>
+      <th>Dislikes</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name_product, product %></td>
+        <td><%= product.description_product %></td>
+        <td><%= product.like_product %></td>
+        <td><%= product.dislike_product %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Crea un nuevo reto', new_product_path if user_signed_in? && current_user.is_user_editor?%>

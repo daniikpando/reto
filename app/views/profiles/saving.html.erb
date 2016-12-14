@@ -1,0 +1,5 @@
+<h1>Mejorar cuenta</h1>
+<%= form_tag "/profiles/improve/#{@user.id}/update", method: :put,multipart: true do %>
+  <%= number_field_tag("user[account_of_saving]") %>
+  <%= submit_tag "send"%>
+<% end %>

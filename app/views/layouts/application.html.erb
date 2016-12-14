@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Market</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <header class="Encabezado">
+		<div class="wrapper">
+            <div class="Encabezado-logo">
+                <div class="Encabezado-logo-imagen">
+                    <img src="<%= asset_path 'logo.png' %>">
+                </div>
+            </div>
+            <nav class="Encabezado-enlances">
+				<ul class="Encabezado-enlaces-grupos Encabezado-enlaces-g">
+					<li class="Encabezado-enlaces-grupos-flotar"><%=link_to "Inicio", root_path, class: "color-navigation"%></li>
+					<li class="Encabezado-enlaces-grupos-flotar"><%= link_to "Retos", products_path, class: "color-navigation"%></li>
+					<li class="Encabezado-enlaces-grupos-flotar"><%= link_to "Crea un reto", new_product_path, class: "color-navigation"%></li>
+				</ul>
+				<ul class="Encabezado-enlaces-grupos">
+					<%if user_signed_in?%>
+						<li class="Encabezado-enlaces-grupos-flotar"><%=link_to "Cerrar Seccion" , destroy_user_session_path,method: :delete, class: "color-navigation"%></li>
+                        <li class="Encabezado-enlaces-grupos-flotar" id="img-user"><a href="/profiles"><img src="<%= asset_path 'l.png' %>"></a></li>
+                    <%else%>
+						<li class="Encabezado-enlaces-grupos-flotar"><%= link_to "Iniciar Seccion", new_user_session_path, class: "color-navigation"%></li>
+						<li class="Encabezado-enlaces-grupos-flotar"><%= link_to "Crear Cuenta",new_user_registration_path, class: "color-navigation"%></li>
+					<%end%>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<div class="wrapper">
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+		<%= yield %>
+	</div>
+</body>
+</html>
